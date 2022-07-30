@@ -1,0 +1,49 @@
+package com.jcl.day9;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class Day9_Q01 {
+	/*
+	 * 1. Write a program for reading a binary file.
+	 */
+	public static void main(String[] args) {
+		
+		FileInputStream source = null;
+		FileOutputStream target = null;
+		int temp = 0;
+		
+		try {
+			try {
+				source = new FileInputStream("C:\\Users\\jordan.lim\\Documents\\Java IO Files\\Q01 Octocat.png");
+				target = new FileOutputStream("C:\\Users\\jordan.lim\\Documents\\Java IO Files\\Q01 An Octocat.png");
+				
+				while ((temp = source.read()) != -1) {
+					target.write((byte) temp);
+				}
+				System.out.println("Success!");
+			} catch (FileNotFoundException e) { 
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		} finally {
+			try {
+				if (source != null) {
+					source.close();
+				}
+				if (target != null) {
+					target.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+}
